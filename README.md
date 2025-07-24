@@ -1,6 +1,6 @@
 # 🧼 Empleado SOAP Service
 
-Este proyecto es un servicio **SOAP** construido con **Spring Boot**, diseñado para gestionar operaciones relacionadas con empleados. Expone un endpoint WSDL para facilitar integraciones con otros sistemas que consumen servicios web SOAP.
+Este proyecto es un servicio **SOAP** construido con **Spring Boot**, diseñado para gestionar operaciones relacionadas con empleados. Expone un endpoint WSDL para facilitar integraciones con otros sistemas que consumen servicios web SOAP. Para esta prueba en concreto quien se comunicará será un servicio REST.
 
 ---
 
