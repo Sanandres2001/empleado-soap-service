@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://www.parameta.co/empleado"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             name="EmpleadoService"
+             targetNamespace="http://www.parameta.co/empleado">
+
+    <!-- Tipos de datos -->
+    <types>
+        <xsd:schema targetNamespace="">
+            <xsd:element name="GuardarEmpleadoRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="nombres" type="xsd:string"/>
+                        <xsd:element name="apellidos" type="xsd:string"/>
+                        <xsd:element name="tipoDocumento" type="xsd:string"/>
+                        <xsd:element name="numeroDocumento" type="xsd:string"/>
+                        <xsd:element name="fechaNacimiento" type="xsd:date"/>
+                        <xsd:element name="fechaVinculacion" type="xsd:date"/>
+                        <xsd:element name="cargo" type="xsd:string"/>
+                        <xsd:element name="salario" type="xsd:double"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="GuardarEmpleadoResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="mensaje" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+
+    <!-- Mensajes -->
+    <message name="GuardarEmpleadoRequest">
+        <part name="parameters" element="tns:GuardarEmpleadoRequest"/>
+    </message>
+
+    <message name="GuardarEmpleadoResponse">
+        <part name="parameters" element="tns:GuardarEmpleadoResponse"/>
+    </message>
+
+    <!-- Operaciones -->
+    <portType name="EmpleadoPortType">
+        <operation name="guardarEmpleado">
+            <input message="tns:GuardarEmpleadoRequest"/>
+            <output message="tns:GuardarEmpleadoResponse"/>
+        </operation>
+    </portType>
+
+    <!-- Binding -->
+    <binding name="EmpleadoBinding" type="tns:EmpleadoPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="guardarEmpleado">
+            <soap:operation soapAction="guardarEmpleado"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <!-- Servicio -->
+    <service name="EmpleadoService">
+        <port name="EmpleadoPort" binding="tns:EmpleadoBinding">
+            <soap:address location="http://www.parameta.co/ws/empleado"/>
+        </port>
+    </service>
+
+</definitions>
